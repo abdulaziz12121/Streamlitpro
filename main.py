@@ -117,12 +117,7 @@ def main():
 
     if st.button("Predict"):
         output=predict_forest(y,red,po)
-        st.success('The probability of fire taking place is {}'.format(output))
-
-        if output > 0.5:
-            st.markdown(danger_html,unsafe_allow_html=True)
-        else:
-            st.markdown(safe_html,unsafe_allow_html=True)
+        print(output)
 
 if __name__=='__main__':
     main()
