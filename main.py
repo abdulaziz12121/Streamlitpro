@@ -2,11 +2,6 @@
 import streamlit as st
 import pickle
 import numpy as np
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.neighbors import NearestNeighbors
-from sklearn.cluster import DBSCAN
-from sklearn.metrics import silhouette_score
-from sklearn.preprocessing import LabelEncoder
 from sklearn import metrics
 
 model=pickle.load(open("model3.pkl",'rb'))
