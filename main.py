@@ -49,12 +49,12 @@
 #     return {"pred": y_pred.tolist()[0]}
 
 # from fastapi import FastAPI, HTTPException
-import pickle
+# import pickle
 # from pydantic import BaseModel
 # from fastapi import FastAPI
 # import uvicorn
 # import joblib
-import numpy as np
+# import numpy as np
 
 # Load the trained model
 # model = joblib.load('DBSCAN_model.joblib')
@@ -79,3 +79,50 @@ import numpy as np
 # if __name__ == "__main__":
 #     import uvicorn
     # uvicorn.run(app, host="127.0.0.1", port=8000)
+    
+import streamlit as st
+import pickle
+import numpy as np
+model=pickle.load(open('model1.pkl','rb'))
+
+
+def predict_forest(y,red,po):
+    input=np.array([[y,red,po]]).astype(np.float64)
+    prediction=model.predict_proba(input)
+    pred='{0:.{1}f}'.format(prediction[0][0], 2)
+    return float(pred)
+
+def main():
+    st.title("Streamlit Tutorial")
+    html_temp = """
+    <div style="background-color:#025246 ;padding:10px">
+    <h2 style="color:white;text-align:center;">Forest Fire Prediction ML App </h2>
+    </div>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    y = st.text_input("y","Type Here")
+    red = st.text_input("red","Type Here")
+    po = st.text_input("po","Type Here")
+    safe_html="""  
+      <div style="background-color:#F4D03F;padding:10px >
+       <h2 style="color:white;text-align:center;"> Your forest is safe</h2>
+       </div>
+    """
+    danger_html="""  
+      <div style="background-color:#F08080;padding:10px >
+       <h2 style="color:black ;text-align:center;"> Your forest is in danger</h2>
+       </div>
+    """
+
+    if st.button("Predict"):
+        output=predict_forest(y,red,po)
+        st.success('The probability of fire taking place is {}'.format(output))
+
+        if output > 0.5:
+            st.markdown(danger_html,unsafe_allow_html=True)
+        else:
+            st.markdown(safe_html,unsafe_allow_html=True)
+
+if __name__=='__main__':
+    main()
