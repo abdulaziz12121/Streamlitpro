@@ -52,7 +52,7 @@
 # import pickle
 # from pydantic import BaseModel
 # from fastapi import FastAPI
-import uvicorn
+# import uvicorn
 import joblib
 import numpy as np
 
