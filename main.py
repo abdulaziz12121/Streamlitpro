@@ -88,7 +88,7 @@ model=pickle.load(open('model1.pkl','rb'))
 
 def predict_forest(y,red,po):
     input=np.array([[y,red,po]]).astype(np.float64)
-    prediction=model.predict_proba(input)
+    prediction=model(input)
     pred='{0:.{1}f}'.format(prediction[0][0], 2)
     return float(pred)
 
