@@ -49,11 +49,11 @@
 #     return {"pred": y_pred.tolist()[0]}
 
 # from fastapi import FastAPI, HTTPException
-# import pickle
+import pickle
 # from pydantic import BaseModel
 # from fastapi import FastAPI
 # import uvicorn
-import joblib
+# import joblib
 import numpy as np
 
 # Load the trained model
