@@ -83,7 +83,7 @@
 import streamlit as st
 import pickle
 import numpy as np
-model=pickle.load(open('model1.pkl','rb'))
+model=pickle.load(open("model1.pkl",'rb'))
 
 
 def predict_forest(y,red,po):
