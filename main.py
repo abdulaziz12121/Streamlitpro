@@ -57,7 +57,7 @@ import pickle
 import numpy as np
 
 # Load the trained model
-model = joblib.load('DBSCAN_model.joblib')
+# model = joblib.load('DBSCAN_model.joblib')
 
 # # FastAPI app instance
 # app = FastAPI()
