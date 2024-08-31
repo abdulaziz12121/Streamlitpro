@@ -83,12 +83,12 @@
 import streamlit as st
 import pickle
 import numpy as np
-model=pickle.load(open("model1.pkl",'rb'))
+model=pickle.load(open("model3.pkl",'rb'))
 
 
 def predict_forest(y,red,po):
     input=np.array([[y,red,po]]).astype(np.float64)
-    prediction=model(input)
+    prediction=model.fit_predict(input)
     pred='{0:.{1}f}'.format(prediction[0][0], 2)
     return float(pred)
 
